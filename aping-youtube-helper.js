@@ -1,6 +1,6 @@
 "use strict";
 
-jjtApingYoutube.service('apingYoutubeHelper', function (apingOutputObjects, apingTimeHelper, apingUtilityHelper) {
+jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeHelper', 'apingUtilityHelper', function (apingOutputObjects, apingTimeHelper, apingUtilityHelper) {
 
     this.getObjectByJsonData = function (_data, _type) {
 
@@ -75,4 +75,4 @@ jjtApingYoutube.service('apingYoutubeHelper', function (apingOutputObjects, apin
         return socialObject;
     }
 
-});
+}]);

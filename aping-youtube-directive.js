@@ -1,7 +1,7 @@
 "use strict";
 
 var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
-    .directive('apingYoutube', function (youtubeFactory, apingApiKeys, apingYoutubeHelper, apingUtilityHelper) {
+    .directive('apingYoutube', ['youtubeFactory', 'apingApiKeys', 'apingYoutubeHelper', 'apingUtilityHelper', function (youtubeFactory, apingApiKeys, apingYoutubeHelper, apingUtilityHelper) {
         return {
             require: '?aping',
             restrict: 'A',
@@ -64,4 +64,4 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                 });
             }
         }
-    });
+    }]);
