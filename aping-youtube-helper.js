@@ -42,7 +42,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeH
 
 
         $.extend(true, socialObject, {
-            blog_name: _item.snippet.channelTitle || _item.snippet.channelId || false,
+            blog_name: _item.snippet.channelTitle || false,
             blog_id: _item.snippet.channelId || false,
             blog_link: "https://www.youtube.com/channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
