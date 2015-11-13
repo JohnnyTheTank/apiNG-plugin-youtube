@@ -60,8 +60,8 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeH
     };
 
     this.getVideoItemByJsonData = function (_item) {
-        var socialObject = apingOutputObjects.getNew("video", "youtube");
-        $.extend(true, socialObject, {
+        var videoObject = apingOutputObjects.getNew("video", "youtube");
+        $.extend(true, videoObject, {
             blog_name: _item.snippet.channelTitle || false,
             blog_id: _item.snippet.channelId || false,
             blog_link: "https://www.youtube.com/channel/" + _item.snippet.channelId,
@@ -71,17 +71,17 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeH
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
         });
         if (_item.snippet.title !== "" && _item.snippet.description !== "") {
-            socialObject.caption = _item.snippet.title;
-            socialObject.text = _item.snippet.description;
+            videoObject.caption = _item.snippet.title;
+            videoObject.text = _item.snippet.description;
         } else {
             if (_item.snippet.title !== "") {
-                socialObject.caption = _item.snippet.title;
+                videoObject.caption = _item.snippet.title;
             } else {
-                socialObject.caption = _item.snippet.description;
+                videoObject.caption = _item.snippet.description;
             }
         }
-        socialObject.img_url = apingUtilityHelper.getYoutubeImageFromId(socialObject.intern_id);
-        socialObject.post_url = "https://www.youtube.com/watch?v=" + socialObject.intern_id;
-        return socialObject;
+        videoObject.img_url = apingUtilityHelper.getYoutubeImageFromId(videoObject.intern_id);
+        videoObject.post_url = "https://www.youtube.com/watch?v=" + videoObject.intern_id;
+        return videoObject;
     };
 }]);
