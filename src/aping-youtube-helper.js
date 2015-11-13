@@ -1,4 +1,11 @@
 "use strict";
+
+/**
+ @author Jonathan Hornung (https://github.com/JohnnyTheTank)
+ @url https://github.com/JohnnyTheTank/apiNG-youtube-plugin
+ @licence MIT
+ */
+
 jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeHelper', 'apingUtilityHelper', function (apingOutputObjects, apingTimeHelper, apingUtilityHelper) {
     this.getObjectByJsonData = function (_data, _type) {
         var requestResults = [];

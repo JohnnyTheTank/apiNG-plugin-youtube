@@ -1,5 +1,11 @@
 "use strict";
 
+/**
+ @author Jonathan Hornung (https://github.com/JohnnyTheTank)
+ @url https://github.com/JohnnyTheTank/apiNG-youtube-plugin
+ @licence MIT
+ */
+
 var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
     .directive('apingYoutube', ['youtubeFactory', 'apingApiKeys', 'apingYoutubeHelper', 'apingUtilityHelper', function (youtubeFactory, apingApiKeys, apingYoutubeHelper, apingUtilityHelper) {
         return {
