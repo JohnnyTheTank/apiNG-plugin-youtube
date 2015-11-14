@@ -30,7 +30,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                             'channelId': request.channelId,
                             'searchString': request.search || false,
                             'key': apingApiKeys.youtube,
-                            'maxResults': appSettings.items || request.items,
+                            'maxResults': request.items || appSettings.items,
                         };
 
                         youtubeFactory.getVideosFromChannelById(youtubeSearchObject)
@@ -44,7 +44,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                         youtubeSearchObject = {
                             'searchString': request.search,
                             'key': apingApiKeys.youtube,
-                            'maxResults': appSettings.items || request.items,
+                            'maxResults': request.items || appSettings.items,
                         };
 
                         youtubeFactory.getVideosFromSearchByString(youtubeSearchObject)
@@ -57,7 +57,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                         youtubeSearchObject = {
                             'playlistId': request.playlistId,
                             'key': apingApiKeys.youtube,
-                            'maxResults': appSettings.items || request.items,
+                            'maxResults': request.items || appSettings.items,
                         };
 
                         youtubeFactory.getVideosFromPlaylistById(youtubeSearchObject)
