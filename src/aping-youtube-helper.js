@@ -89,6 +89,9 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeH
         }
         videoObject.img_url = apingUtilityHelper.getYoutubeImageFromId(videoObject.intern_id);
         videoObject.post_url = "https://www.youtube.com/watch?v=" + videoObject.intern_id;
+
+        videoObject.markup = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/'+videoObject.intern_id+'?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+
         return videoObject;
     };
 }]);
