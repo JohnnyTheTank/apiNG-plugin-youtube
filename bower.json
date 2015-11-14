@@ -1,10 +1,10 @@
 {
-  "name": "apiNG-youtube-plugin",
-  "homepage": "https://github.com/JohnnyTheTank/apiNG-youtube-plugin",
+  "name": "apiNG-plugin-youtube",
+  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-youtube",
   "authors": [
     "Jonathan Hornung <jonathan.hornung@gmail.com>"
   ],
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "youtube plugin for apiNG",
   "main": "dist/angular-youtube-directive.min.js",
   "moduleType": [],
