@@ -22,16 +22,16 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                 requests.forEach(function (request) {
 
-                    var youtubeSearchObject = {};
-
+                    var youtubeSearchObject = {
+                        'key': apingApiKeys.youtube,
+                        'maxResults': request.items || appSettings.items,
+                    };
 
                     if (request.channelId) { //search for channelID (and optional searchterm)
-                        youtubeSearchObject = {
-                            'channelId': request.channelId,
-                            'searchString': request.search || false,
-                            'key': apingApiKeys.youtube,
-                            'maxResults': request.items || appSettings.items,
-                        };
+                        youtubeSearchObject.channelId = request.channelId;
+                        if(request.search) {
+                            youtubeSearchObject.searchString = request.search;
+                        }
 
                         youtubeFactory.getVideosFromChannelById(youtubeSearchObject)
                             .success(function (_videosData) {
@@ -41,11 +41,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                             });
 
                     } else if (request.search) { //search for searchterm
-                        youtubeSearchObject = {
-                            'searchString': request.search,
-                            'key': apingApiKeys.youtube,
-                            'maxResults': request.items || appSettings.items,
-                        };
+                        youtubeSearchObject.searchString = request.search;
 
                         youtubeFactory.getVideosFromSearchByString(youtubeSearchObject)
                             .success(function (_videosData) {
@@ -54,11 +50,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                                 }
                             });
                     } else if (request.playlistId) { //search for playlistId
-                        youtubeSearchObject = {
-                            'playlistId': request.playlistId,
-                            'key': apingApiKeys.youtube,
-                            'maxResults': request.items || appSettings.items,
-                        };
+                        youtubeSearchObject.playlistId = request.playlistId;
 
                         youtubeFactory.getVideosFromPlaylistById(youtubeSearchObject)
                             .success(function (_videosData) {
