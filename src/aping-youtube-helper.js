@@ -60,6 +60,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeH
             socialObject.type = "video";
         } else if (_item.kind == "youtube#playlistItem" && _item.snippet.resourceId && _item.snippet.resourceId.kind == "youtube#video") {
             socialObject.type = "video";
+            socialObject.position = _item.snippet.position;
         }
         socialObject.img_url = apingUtilityHelper.getYoutubeImageFromId(socialObject.intern_id);
         socialObject.post_url = "https://www.youtube.com/watch?v=" + socialObject.intern_id;
@@ -89,7 +90,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeH
         }
         videoObject.img_url = apingUtilityHelper.getYoutubeImageFromId(videoObject.intern_id);
         videoObject.post_url = "https://www.youtube.com/watch?v=" + videoObject.intern_id;
-
+        videoObject.position = _item.snippet.position;
         videoObject.markup = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/'+videoObject.intern_id+'?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
 
         return videoObject;
