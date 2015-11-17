@@ -6,7 +6,7 @@
  @licence MIT
  */
 
-jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeHelper', 'apingUtilityHelper', function (apingOutputObjects, apingTimeHelper, apingUtilityHelper) {
+jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
     this.getObjectByJsonData = function (_data, _type) {
         var requestResults = [];
         if (_data) {
@@ -36,7 +36,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeH
     };
 
     this.getSocialItemByJsonData = function (_item) {
-        var socialObject = apingOutputObjects.getNew("social", "youtube");
+        var socialObject = apingModels.getNew("social", "youtube");
         $.extend(true, socialObject, {
             blog_name: _item.snippet.channelTitle || false,
             blog_id: _item.snippet.channelId || false,
@@ -68,7 +68,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingOutputObjects', 'apingTimeH
     };
 
     this.getVideoItemByJsonData = function (_item) {
-        var videoObject = apingOutputObjects.getNew("video", "youtube");
+        var videoObject = apingModels.getNew("video", "youtube");
         $.extend(true, videoObject, {
             blog_name: _item.snippet.channelTitle || false,
             blog_id: _item.snippet.channelId || false,
