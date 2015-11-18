@@ -7,7 +7,8 @@ module.exports = function(grunt) {
                 files : {
                     'dist/aping-plugin-youtube.min.js' : [
                         'src/aping-youtube-directive.js',
-                        'src/aping-youtube-helper.js'
+                        'src/aping-youtube-helper.js',
+                        'bower_components/angular-youtube-api-factory/src/angular-youtube-api-factory.js'
                     ]
                 }
             },
@@ -19,7 +20,8 @@ module.exports = function(grunt) {
             minifiyJs: {
                 files: [
                     'src/aping-youtube-directive.js',
-                    'src/aping-youtube-helper.js'
+                    'src/aping-youtube-helper.js',
+                    'bower_components/angular-youtube-api-factory/src/angular-youtube-api-factory.js'
                 ],
                 tasks: ['uglify'],
                 options: {

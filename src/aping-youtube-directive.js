@@ -30,7 +30,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                     if (request.channelId) { //search for channelID (and optional searchterm)
                         youtubeSearchObject.channelId = request.channelId;
                         if(request.search) {
-                            youtubeSearchObject.searchString = request.search;
+                            youtubeSearchObject.q = request.search;
                         }
 
                         youtubeFactory.getVideosFromChannelById(youtubeSearchObject)
@@ -41,7 +41,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                             });
 
                     } else if (request.search) { //search for searchterm
-                        youtubeSearchObject.searchString = request.search;
+                        youtubeSearchObject.q = request.search;
 
                         youtubeFactory.getVideosFromSearchByString(youtubeSearchObject)
                             .success(function (_videosData) {
