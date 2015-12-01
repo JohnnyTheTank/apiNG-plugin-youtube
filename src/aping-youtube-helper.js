@@ -21,7 +21,10 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
             var _this = this;
             if (_data.items) {
                 angular.forEach(_data.items, function (value, key) {
-                    requestResults.push(_this.getItemByJsonData(value, _type));
+                    var tempResult = _this.getItemByJsonData(value, _type);
+                    if(tempResult) {
+                        requestResults.push(tempResult);
+                    }
                 });
             }
         }
@@ -38,6 +41,9 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
                 case "video":
                     returnObject = this.getVideoItemByJsonData(_item);
                     break;
+
+                default:
+                    return false;
             }
         }
         return returnObject;
