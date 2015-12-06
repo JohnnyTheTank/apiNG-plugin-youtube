@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apiNG Youtube Demo</title>
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="../bower_components/apiNG/dist/aping.min.js"></script>
+    <script src="aping-config.js"></script>
+    <script src="app.js"></script>
+    <script src="../bower_components/angular-youtube-api-factory/src/angular-youtube-api-factory.js"></script>
+    <script src="../src/aping-youtube-directive.js"></script>
+    <script src="../src/aping-youtube-helper.js"></script>
+</head>
+<body ng-app="app">
+    <h1>[{'search':'fcbayern'}]</h1>
+    <aping type="social" aping-youtube="[{'search':'fcbayern'}]"></aping>
+    <hr>
+    <h1>[{'channelId':'UC37PFGlxWgx4tU6SlhPCdCw'}]</h1>
+    <aping type="social" aping-youtube="[{'channelId':'UC37PFGlxWgx4tU6SlhPCdCw'}]"></aping>
+    <hr>
+    <h1>[{'playlistId':'PLzm_lfByuAEF5RTM5j94TLrbbF4a9PBG4'}]</h1>
+    <aping type="social" aping-youtube="[{'playlistId':'PLzm_lfByuAEF5RTM5j94TLrbbF4a9PBG4'}]"></aping>
+
+
+</body>
+</html>
