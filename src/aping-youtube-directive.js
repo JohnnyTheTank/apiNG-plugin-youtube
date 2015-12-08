@@ -34,7 +34,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                         youtubeFactory.getVideosFromChannelById(youtubeSearchObject)
                             .success(function (_videosData) {
                                 if (_videosData) {
-                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, appSettings.type));
+                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, appSettings.model));
                                 }
                             });
 
@@ -44,7 +44,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                         youtubeFactory.getVideosFromSearchByString(youtubeSearchObject)
                             .success(function (_videosData) {
                                 if (_videosData) {
-                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, appSettings.type));
+                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, appSettings.model));
                                 }
                             });
                     } else if (request.playlistId) { //search for playlistId
@@ -53,7 +53,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                         youtubeFactory.getVideosFromPlaylistById(youtubeSearchObject)
                             .success(function (_videosData) {
                                 if (_videosData) {
-                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, appSettings.type));
+                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, appSettings.model));
                                 }
                             });
                     }
