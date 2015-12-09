@@ -77,10 +77,10 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
             blog_id: _item.snippet.channelId || false,
             blog_link: this.getThisPlattformLink()+"channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
-            date: _item.snippet.publishedAt,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
         });
+        socialObject.date_time = new Date(socialObject.timestamp);
         if (_item.snippet.title !== "" && _item.snippet.description !== "") {
             socialObject.caption = _item.snippet.title;
             socialObject.text = _item.snippet.description;
@@ -109,10 +109,10 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
             blog_id: _item.snippet.channelId || false,
             blog_link: this.getThisPlattformLink()+"channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
-            date: _item.snippet.publishedAt,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
         });
+        videoObject.date_time = new Date(videoObject.timestamp);
         if (_item.snippet.title !== "" && _item.snippet.description !== "") {
             videoObject.caption = _item.snippet.title;
             videoObject.text = _item.snippet.description;

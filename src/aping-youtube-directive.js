@@ -7,7 +7,7 @@
  */
 
 var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
-    .directive('apingYoutube', ['youtubeFactory', 'apingApiKeys', 'apingYoutubeHelper', 'apingUtilityHelper', function (youtubeFactory, apingApiKeys, apingYoutubeHelper, apingUtilityHelper) {
+    .directive('apingYoutube', ['youtubeFactory', 'apingYoutubeHelper', 'apingUtilityHelper', function (youtubeFactory, apingYoutubeHelper, apingUtilityHelper) {
         return {
             require: '?aping',
             restrict: 'A',
@@ -21,7 +21,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                 requests.forEach(function (request) {
 
                     var youtubeSearchObject = {
-                        'key': apingApiKeys.youtube,
+                        'key': apingUtilityHelper.getApiCredentials(apingYoutubeHelper.getThisPlattformString(), "apiKey"),
                         'maxResults': request.items || appSettings.items,
                     };
 
