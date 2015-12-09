@@ -15,6 +15,27 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
         return "https://www.youtube.com/";
     };
 
+    this.getYoutubeIdFromUrl = function (_url) {
+        var rx = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
+        return _url.match(rx)[1] || false;
+    };
+
+    this.getYoutubeImageFromId = function (_youtubeId, size) {
+        switch (size) {
+            case 'default':
+            case 'maxresdefault':
+            case 'mqdefault':
+            case 'sddefault':
+                return "https://img.youtube.com/vi/" + _youtubeId + "/" + size + ".jpg";
+                break;
+
+            case 'hqdefault':
+            default:
+                return "https://img.youtube.com/vi/" + _youtubeId + "/hqdefault.jpg";
+                break;
+        }
+    };
+
     this.getObjectByJsonData = function (_data, _type) {
         var requestResults = [];
         if (_data) {
@@ -76,7 +97,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
             socialObject.type = "video";
             socialObject.position = _item.snippet.position;
         }
-        socialObject.img_url = apingUtilityHelper.getYoutubeImageFromId(socialObject.intern_id);
+        socialObject.img_url = this.getYoutubeImageFromId(socialObject.intern_id);
         socialObject.post_url = this.getThisPlattformLink()+"watch?v=" + socialObject.intern_id;
         return socialObject;
     };
@@ -102,7 +123,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
                 videoObject.caption = _item.snippet.description;
             }
         }
-        videoObject.img_url = apingUtilityHelper.getYoutubeImageFromId(videoObject.intern_id);
+        videoObject.img_url = this.getYoutubeImageFromId(videoObject.intern_id);
         videoObject.post_url = this.getThisPlattformLink()+"watch?v=" + videoObject.intern_id;
         videoObject.position = _item.snippet.position;
         videoObject.markup = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/'+videoObject.intern_id+'?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
