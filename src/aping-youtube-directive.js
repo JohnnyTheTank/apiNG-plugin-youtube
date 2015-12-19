@@ -20,40 +20,51 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                 requests.forEach(function (request) {
 
-                    var youtubeSearchObject = {
+                    //create helperObject for helper function call
+                    var helperObject = {
+                        model: appSettings.model,
+                    };
+                    if(typeof appSettings.getNativeData !== "undefined") {
+                        helperObject.getNativeData = appSettings.getNativeData;
+                    } else {
+                        helperObject.getNativeData = false;
+                    }
+
+                    //create requestObject for api request call
+                    var requestObject = {
                         'key': apingUtilityHelper.getApiCredentials(apingYoutubeHelper.getThisPlattformString(), "apiKey"),
                         'maxResults': request.items || appSettings.items,
                     };
 
                     if (request.channelId) { //search for channelID (and optional searchterm)
-                        youtubeSearchObject.channelId = request.channelId;
+                        requestObject.channelId = request.channelId;
                         if(request.search) {
-                            youtubeSearchObject.q = request.search;
+                            requestObject.q = request.search;
                         }
 
-                        youtubeFactory.getVideosFromChannelById(youtubeSearchObject)
+                        youtubeFactory.getVideosFromChannelById(requestObject)
                             .success(function (_videosData) {
                                 if (_videosData) {
-                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, appSettings.model));
+                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, helperObject));
                                 }
                             });
 
                     } else if (request.search) { //search for searchterm
-                        youtubeSearchObject.q = request.search;
+                        requestObject.q = request.search;
 
-                        youtubeFactory.getVideosFromSearchByString(youtubeSearchObject)
+                        youtubeFactory.getVideosFromSearchByString(requestObject)
                             .success(function (_videosData) {
                                 if (_videosData) {
-                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, appSettings.model));
+                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, helperObject));
                                 }
                             });
                     } else if (request.playlistId) { //search for playlistId
-                        youtubeSearchObject.playlistId = request.playlistId;
+                        requestObject.playlistId = request.playlistId;
 
-                        youtubeFactory.getVideosFromPlaylistById(youtubeSearchObject)
+                        youtubeFactory.getVideosFromPlaylistById(requestObject)
                             .success(function (_videosData) {
                                 if (_videosData) {
-                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, appSettings.model));
+                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, helperObject));
                                 }
                             });
                     }

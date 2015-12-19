@@ -3,7 +3,7 @@ apingApp.config(['$provide', function ($provide) {
 
     $provide.constant("apingApiKeys", {
         youtube : [
-            {'apiKey':"AIzaSyARYVuV6dho71EMZI6j6-sDEgo8OOnFygM"}
+            {'apiKey':'<YOUR_YOUTUBE_API_KEY>'}
         ]
     });
 
@@ -14,6 +14,7 @@ apingApp.config(['$provide', function ($provide) {
         orderBy : "timestamp",
         orderReverse : "true",
         model: "social",
+        getNativeData: false, // Use "true" for getting native data from plugins
     });
 
 }]);
