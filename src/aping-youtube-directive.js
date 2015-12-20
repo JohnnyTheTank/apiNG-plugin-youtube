@@ -49,10 +49,21 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                                 }
                             });
 
-                    } else if (request.search) { //search for searchterm
-                        requestObject.q = request.search;
+                    } else if (request.search || (request.lat && request.lng)) { //search for searchterm and or location
 
-                        youtubeFactory.getVideosFromSearchByString(requestObject)
+                        if(request.search) {
+                            requestObject.q = request.search;
+                        }
+
+                        if(request.lat && request.lng) {
+                            requestObject.location = request.lat + "," + request.lng;
+                        }
+
+                        if(request.distance) {
+                            requestObject.locationRadius = request.distance;
+                        }
+
+                        youtubeFactory.getVideosFromSearchByParams(requestObject)
                             .success(function (_videosData) {
                                 if (_videosData) {
                                     apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, helperObject));
