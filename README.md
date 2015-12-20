@@ -5,5 +5,9 @@ Youtube Plugin for [apiNG](https://github.com/JohnnyTheTank/apiNG)
 - **`social`**
 - **`video`**
 
+## `items`
+* min: 0
+* max: 50
+
 ## usage
 full documentation coming soon ...

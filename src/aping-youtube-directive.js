@@ -32,9 +32,25 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                     //create requestObject for api request call
                     var requestObject = {
-                        'key': apingUtilityHelper.getApiCredentials(apingYoutubeHelper.getThisPlattformString(), "apiKey"),
-                        'maxResults': request.items || appSettings.items,
+                        key: apingUtilityHelper.getApiCredentials(apingYoutubeHelper.getThisPlattformString(), "apiKey"),
                     };
+
+                    if(typeof request.items !== "undefined") {
+                        requestObject.maxResults = request.items;
+                    } else {
+                        requestObject.maxResults = appSettings.items;
+                    }
+
+                    // -1 is "no explicit limit". same for NaN value
+                    if(requestObject.maxResults < 0 || isNaN(requestObject.maxResults)) {
+                        requestObject.maxResults = undefined;
+                    }
+
+                    // the api has a limit of 50 items per request
+                    if(requestObject.maxResults > 50) {
+                        requestObject.maxResults = 50;
+                    }
+
 
                     if (request.channelId) { //search for channelID (and optional searchterm)
                         requestObject.channelId = request.channelId;
