@@ -78,8 +78,8 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
     this.getSocialItemByJsonData = function (_item) {
         var socialObject = apingModels.getNew("social", "youtube");
         $.extend(true, socialObject, {
-            blog_name: _item.snippet.channelTitle || false,
-            blog_id: _item.snippet.channelId || false,
+            blog_name: _item.snippet.channelTitle || undefined,
+            blog_id: _item.snippet.channelId || undefined,
             blog_link: this.getThisPlattformLink()+"channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
@@ -110,8 +110,8 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
     this.getVideoItemByJsonData = function (_item) {
         var videoObject = apingModels.getNew("video", "youtube");
         $.extend(true, videoObject, {
-            blog_name: _item.snippet.channelTitle || false,
-            blog_id: _item.snippet.channelId || false,
+            blog_name: _item.snippet.channelTitle || undefined,
+            blog_id: _item.snippet.channelId || undefined,
             blog_link: this.getThisPlattformLink()+"channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
