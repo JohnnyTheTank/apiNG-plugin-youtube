@@ -8,6 +8,7 @@ Youtube Plugin for [apiNG](https://github.com/JohnnyTheTank/apiNG)
 ## `items`
 * min: 0
 * max: 50
+* (default: 5)
 
 ## usage
 full documentation coming soon ...
