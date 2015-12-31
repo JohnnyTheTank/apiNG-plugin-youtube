@@ -9,7 +9,7 @@
 
 # Documentation
     I.   INSTALLATION
-    II.  BEARER TOKEN
+    II.  API KEY
     III. USAGE
 
 ## I. INSTALLATION
