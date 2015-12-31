@@ -1,6 +1,6 @@
 {
   "name": "aping-plugin-youtube",
-  "version": "0.4.13",
+  "version": "0.6.0",
   "description": "youtube plugin for apiNG",
   "main": "Gruntfile.js",
   "scripts": {
