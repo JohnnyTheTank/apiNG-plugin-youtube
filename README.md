@@ -27,7 +27,7 @@ You can choose your preferred method of installation:
 ### b) Include files
 Include `apiNG-plugin-youtube.min.js` in your apiNG application
 ```html
-<script src="bower_components/apiNG-plugin-youtube/dist/apiNG-plugin-youtube.min.js"></script>
+<script src="bower_components/apiNG-plugin-youtube/dist/aping-plugin-youtube.min.js"></script>
 ```
 
 ### c) Add dependencies
