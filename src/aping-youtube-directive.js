@@ -1,11 +1,5 @@
 "use strict";
 
-/**
- @author Jonathan Hornung (https://github.com/JohnnyTheTank)
- @url https://github.com/JohnnyTheTank/apiNG-youtube-plugin
- @licence MIT
- */
-
 var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
     .directive('apingYoutube', ['youtubeFactory', 'apingYoutubeHelper', 'apingUtilityHelper', function (youtubeFactory, apingYoutubeHelper, apingUtilityHelper) {
         return {
@@ -59,7 +53,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                         }
 
                         youtubeFactory.getVideosFromChannelById(requestObject)
-                            .success(function (_videosData) {
+                            .then(function (_videosData) {
                                 if (_videosData) {
                                     apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, helperObject));
                                 }
@@ -80,7 +74,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                         }
 
                         youtubeFactory.getVideosFromSearchByParams(requestObject)
-                            .success(function (_videosData) {
+                            .then(function (_videosData) {
                                 if (_videosData) {
                                     apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, helperObject));
                                 }
@@ -89,7 +83,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                         requestObject.playlistId = request.playlistId;
 
                         youtubeFactory.getVideosFromPlaylistById(requestObject)
-                            .success(function (_videosData) {
+                            .then(function (_videosData) {
                                 if (_videosData) {
                                     apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, helperObject));
                                 }

@@ -5,7 +5,7 @@
 
 # Information
 * **Supported apiNG models: `social`, `video`**
-* Used promise library: [angular-youtube-api-factory](https://github.com/JohnnyTheTank/angular-youtube-api-factory) _(included in minified distribution file)_
+* Used promise library: [angular-youtube-api-factory](https://github.com/JohnnyTheTank/angular-youtube-api-factory) _(included in distribution files)_
 
 # Documentation
     I.   INSTALLATION
@@ -13,21 +13,32 @@
     III. USAGE
 
 ## I. INSTALLATION
-    a) Get files
-    b) Include files
+    a) Get file
+    b) Include file
     c) Add dependencies
     d) Add the plugin
 
-### a) Get files
+### a) Get file
 You can choose your preferred method of installation:
 
-* Via bower: `bower install apiNG-plugin-youtube --save`
-* Download from github: [apiNG-plugin-youtube.zip](https://github.com/JohnnyTheTank/apiNG-plugin-youtube/zipball/master)
+Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
 
-### b) Include files
-Include `apiNG-plugin-youtube.min.js` in your apiNG application
+* `bower install apiNG-plugin-youtube --save`
+* `npm install aping-plugin-youtube --save`
+* download [apiNG-plugin-youtube.zip](https://github.com/JohnnyTheTank/apiNG-plugin-youtube/zipball/master)
+
+### b) Include file
+Include `aping-plugin-youtube.min.js` in your apiNG application
+
 ```html
+<!-- when using bower -->
 <script src="bower_components/apiNG-plugin-youtube/dist/aping-plugin-youtube.min.js"></script>
+
+<!-- when using npm -->
+<script src="node_modules/aping-plugin-youtube/dist/aping-plugin-youtube.min.js"></script>
+
+<!-- when using downloaded files -->
+<script src="aping-plugin-youtube.min.js"></script>
 ```
 
 ### c) Add dependencies

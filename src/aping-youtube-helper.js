@@ -1,11 +1,5 @@
 "use strict";
 
-/**
- @author Jonathan Hornung (https://github.com/JohnnyTheTank)
- @url https://github.com/JohnnyTheTank/apiNG-youtube-plugin
- @licence MIT
- */
-
 jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
     this.getThisPlattformString = function () {
         return "youtube";
@@ -38,10 +32,10 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
 
     this.getObjectByJsonData = function (_data, _helperObject) {
         var requestResults = [];
-        if (_data) {
+        if (_data && _data.data) {
             var _this = this;
-            if (_data.items) {
-                angular.forEach(_data.items, function (value, key) {
+            if (_data.data.items) {
+                angular.forEach(_data.data.items, function (value, key) {
                     var tempResult;
                     if(_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
                         tempResult = value;
