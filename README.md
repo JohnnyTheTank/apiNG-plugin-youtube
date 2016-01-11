@@ -5,29 +5,35 @@
 
 # Information
 * **Supported apiNG models: `social`, `video`**
+* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/configuration#parameters)
+* This plugin needs an [api key](#2-api-key) :warning:
 * Used promise library: [angular-youtube-api-factory](https://github.com/JohnnyTheTank/angular-youtube-api-factory) _(included in distribution files)_
 
 # Documentation
-    I.   INSTALLATION
-    II.  API KEY
-    III. USAGE
 
-## I. INSTALLATION
-    a) Get file
-    b) Include file
-    c) Add dependencies
-    d) Add the plugin
+1. [INSTALLATION](#1-installation)
+    1. Get file
+    2. Include file
+    3. Add dependencies
+    4. Add plugin
+2. [API KEY](#2-api-key)
+    1. Generate your `apiKey`
+    2. Insert your `apiKey` into `aping-config.js`
+3. [USAGE](#3-usage)
+    1. Models
+    2. Requests
+    3. Rate limit
 
-### a) Get file
-You can choose your preferred method of installation:
+## 1. INSTALLATION
 
+### I. Get file
 Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
 
 * `bower install apiNG-plugin-youtube --save`
 * `npm install aping-plugin-youtube --save`
 * download [apiNG-plugin-youtube.zip](https://github.com/JohnnyTheTank/apiNG-plugin-youtube/zipball/master)
 
-### b) Include file
+### II. Include file
 Include `aping-plugin-youtube.min.js` in your apiNG application
 
 ```html
@@ -41,14 +47,14 @@ Include `aping-plugin-youtube.min.js` in your apiNG application
 <script src="aping-plugin-youtube.min.js"></script>
 ```
 
-### c) Add dependencies
+### III. Add dependencies
 Add the module `jtt_aping_youtube` as a dependency to your app module:
 ```js
 var app = angular.module('app', ['jtt_aping', 'jtt_aping_youtube']);
 ```
 
-### d) Add the plugin
-Add the plugin's directive `aping-youtube="[]"` to your apiNG directive and configure your requests (_**III. USAGE**_)
+### IV. Add the plugin
+Add the plugin's directive `aping-youtube="[]"` to your apiNG directive and [configure your requests](#ii-requests)
 ```html
 <aping
     template-url="templates/social.html"
@@ -58,11 +64,9 @@ Add the plugin's directive `aping-youtube="[]"` to your apiNG directive and conf
 </aping>
 ```
 
-## II. API KEY
-    a) Generate your `apiKey`
-    b) Insert your `apiKey` into `aping-config.js`
+## 2. API KEY
 
-### a) Generate your `apiKey`
+### I. Generate your `apiKey`
 1. Login on [console.developers.google.com](https://console.developers.google.com/)
 2. Select a project, or create a new one.
 3. In the sidebar on the left, expand APIs & auth.
@@ -74,32 +78,27 @@ Add the plugin's directive `aping-youtube="[]"` to your apiNG directive and conf
         - Choose Browser key
         - Name and create your API Key
 
-### b) Insert your `apiKey` into `aping-config.js`
+### II. Insert your `apiKey` into `aping-config.js`
 Open `js/apiNG/aping-config.js` in your application folder. It should be look like this snippet:
 ```js
 apingApp.config(['$provide', function ($provide) {
-    $provide.constant("apingApiKeys", {
-        //...
-        youtube : [
-            {'apiKey':'<YOUR_YOUTUBE_API_KEY>'},
-        ]
-        //...
-    });
-
-    $provide.constant("apingDefaultSettings", {
-        //...
+    $provide.value("apingDefaultSettings", {
+        apingApiKeys : {
+            //...
+            youtube : [
+                {'apiKey':'<YOUR_YOUTUBE_API_KEY>'},
+            ]
+            //...
+        }
     });
 }]);
 ```
 
 :warning: Replace `<YOUR_YOUTUBE_API_KEY>` with your youtube `apiKey`
 
-## III. USAGE
-    a) Models
-    b) Requests
-    c) Rate limit
+## 2. USAGE
 
-### a) Models
+### I. Models
 Supported apiNG models
 
 |  model   | content | support | max items<br>per request | (native) default items<br>per request |
@@ -112,7 +111,7 @@ Supported apiNG models
 * partly: _the source platfrom provides just partly usable results_
 
 
-### b) Requests
+### II. Requests
 Every **apiNG plugin** expects an array of **requests** as html attribute.
 
 #### Requests by Channel
@@ -160,7 +159,7 @@ Sample requests:
 Sample requests:
 * `[{'lat':'-13.163333', 'lng':'-72.545556', 'distance':'5km'}]`
 
-### c) Rate limit
+### III. Rate limit
 
 Visit the official Youtube Data API documentations: [Quota usage](https://developers.google.com/youtube/v3/getting-started#quota)
 
