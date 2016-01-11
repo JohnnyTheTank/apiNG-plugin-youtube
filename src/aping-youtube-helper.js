@@ -1,11 +1,11 @@
 "use strict";
 
 jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
-    this.getThisPlattformString = function () {
+    this.getThisPlatformString = function () {
         return "youtube";
     };
 
-    this.getThisPlattformLink = function () {
+    this.getThisPlatformLink = function () {
         return "https://www.youtube.com/";
     };
 
@@ -74,7 +74,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
         $.extend(true, socialObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
-            blog_link: this.getThisPlattformLink()+"channel/" + _item.snippet.channelId,
+            blog_link: this.getThisPlatformLink()+"channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
@@ -97,7 +97,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
             socialObject.position = _item.snippet.position;
         }
         socialObject.img_url = this.getYoutubeImageFromId(socialObject.intern_id);
-        socialObject.post_url = this.getThisPlattformLink()+"watch?v=" + socialObject.intern_id;
+        socialObject.post_url = this.getThisPlatformLink()+"watch?v=" + socialObject.intern_id;
         return socialObject;
     };
 
@@ -106,7 +106,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
         $.extend(true, videoObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
-            blog_link: this.getThisPlattformLink()+"channel/" + _item.snippet.channelId,
+            blog_link: this.getThisPlatformLink()+"channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
@@ -123,7 +123,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
             }
         }
         videoObject.img_url = this.getYoutubeImageFromId(videoObject.intern_id);
-        videoObject.post_url = this.getThisPlattformLink()+"watch?v=" + videoObject.intern_id;
+        videoObject.post_url = this.getThisPlatformLink()+"watch?v=" + videoObject.intern_id;
         videoObject.position = _item.snippet.position;
         videoObject.markup = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/'+videoObject.intern_id+'?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
 

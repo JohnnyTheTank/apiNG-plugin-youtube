@@ -1,7 +1,7 @@
 {
   "name": "aping-plugin-youtube",
-  "version": "0.7.0",
-  "description": "youtube plugin for apiNG",
+  "version": "0.7.6",
+  "description": "Youtube plugin for apiNG",
   "main": "dist/angular-plugin-youtube.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,12 +19,12 @@
     "json",
     "angular"
   ],
-  "author": "Jonathan Hornung",
+  "author": "Jonathan Hornung <jonathan.hornung@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/JohnnyTheTank/apiNG-plugin-youtube/issues"
   },
-  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-youtube#readme",
+  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-youtube",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",

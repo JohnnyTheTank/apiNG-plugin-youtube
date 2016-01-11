@@ -1,8 +1,8 @@
 /**
     @name: aping-plugin-youtube 
-    @version: 0.7.0 (09-01-2016) 
-    @author: Jonathan Hornung 
-    @url: https://github.com/JohnnyTheTank/apiNG-plugin-youtube#readme 
+    @version: 0.7.6 (11-01-2016) 
+    @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
+    @url: https://github.com/JohnnyTheTank/apiNG-plugin-youtube 
     @license: MIT
 */
 "use strict";
@@ -17,7 +17,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                 var appSettings = apingController.getAppSettings();
 
-                var requests = apingUtilityHelper.parseJsonFromAttributes(attrs.apingYoutube, apingYoutubeHelper.getThisPlattformString(), appSettings);
+                var requests = apingUtilityHelper.parseJsonFromAttributes(attrs.apingYoutube, apingYoutubeHelper.getThisPlatformString(), appSettings);
 
                 requests.forEach(function (request) {
 
@@ -25,7 +25,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                     var helperObject = {
                         model: appSettings.model,
                     };
-                    if(typeof appSettings.getNativeData !== "undefined") {
+                    if (typeof appSettings.getNativeData !== "undefined") {
                         helperObject.getNativeData = appSettings.getNativeData;
                     } else {
                         helperObject.getNativeData = false;
@@ -33,29 +33,33 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                     //create requestObject for api request call
                     var requestObject = {
-                        key: apingUtilityHelper.getApiCredentials(apingYoutubeHelper.getThisPlattformString(), "apiKey"),
+                        key: apingUtilityHelper.getApiCredentials(apingYoutubeHelper.getThisPlatformString(), "apiKey"),
                     };
 
-                    if(typeof request.items !== "undefined") {
+                    if (typeof request.items !== "undefined") {
                         requestObject.maxResults = request.items;
                     } else {
                         requestObject.maxResults = appSettings.items;
                     }
 
+                    if (requestObject.maxResults === 0 || requestObject.maxResults === '0') {
+                        return false;
+                    }
+
                     // -1 is "no explicit limit". same for NaN value
-                    if(requestObject.maxResults < 0 || isNaN(requestObject.maxResults)) {
+                    if (requestObject.maxResults < 0 || isNaN(requestObject.maxResults)) {
                         requestObject.maxResults = undefined;
                     }
 
                     // the api has a limit of 50 items per request
-                    if(requestObject.maxResults > 50) {
+                    if (requestObject.maxResults > 50) {
                         requestObject.maxResults = 50;
                     }
 
 
                     if (request.channelId) { //search for channelID (and optional searchterm)
                         requestObject.channelId = request.channelId;
-                        if(request.search) {
+                        if (request.search) {
                             requestObject.q = request.search;
                         }
 
@@ -68,15 +72,15 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                     } else if (request.search || (request.lat && request.lng)) { //search for searchterm and or location
 
-                        if(request.search) {
+                        if (request.search) {
                             requestObject.q = request.search;
                         }
 
-                        if(request.lat && request.lng) {
+                        if (request.lat && request.lng) {
                             requestObject.location = request.lat + "," + request.lng;
                         }
 
-                        if(request.distance) {
+                        if (request.distance) {
                             requestObject.locationRadius = request.distance;
                         }
 
@@ -102,11 +106,11 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
     }]);;"use strict";
 
 jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
-    this.getThisPlattformString = function () {
+    this.getThisPlatformString = function () {
         return "youtube";
     };
 
-    this.getThisPlattformLink = function () {
+    this.getThisPlatformLink = function () {
         return "https://www.youtube.com/";
     };
 
@@ -175,7 +179,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
         $.extend(true, socialObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
-            blog_link: this.getThisPlattformLink()+"channel/" + _item.snippet.channelId,
+            blog_link: this.getThisPlatformLink()+"channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
@@ -198,7 +202,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
             socialObject.position = _item.snippet.position;
         }
         socialObject.img_url = this.getYoutubeImageFromId(socialObject.intern_id);
-        socialObject.post_url = this.getThisPlattformLink()+"watch?v=" + socialObject.intern_id;
+        socialObject.post_url = this.getThisPlatformLink()+"watch?v=" + socialObject.intern_id;
         return socialObject;
     };
 
@@ -207,7 +211,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
         $.extend(true, videoObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
-            blog_link: this.getThisPlattformLink()+"channel/" + _item.snippet.channelId,
+            blog_link: this.getThisPlatformLink()+"channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
@@ -224,7 +228,7 @@ jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper',
             }
         }
         videoObject.img_url = this.getYoutubeImageFromId(videoObject.intern_id);
-        videoObject.post_url = this.getThisPlattformLink()+"watch?v=" + videoObject.intern_id;
+        videoObject.post_url = this.getThisPlatformLink()+"watch?v=" + videoObject.intern_id;
         videoObject.position = _item.snippet.position;
         videoObject.markup = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/'+videoObject.intern_id+'?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
 

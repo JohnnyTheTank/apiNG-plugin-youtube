@@ -96,7 +96,7 @@ apingApp.config(['$provide', function ($provide) {
 
 :warning: Replace `<YOUR_YOUTUBE_API_KEY>` with your youtube `apiKey`
 
-## 2. USAGE
+## 3. USAGE
 
 ### I. Models
 Supported apiNG models

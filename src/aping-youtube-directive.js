@@ -10,7 +10,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                 var appSettings = apingController.getAppSettings();
 
-                var requests = apingUtilityHelper.parseJsonFromAttributes(attrs.apingYoutube, apingYoutubeHelper.getThisPlattformString(), appSettings);
+                var requests = apingUtilityHelper.parseJsonFromAttributes(attrs.apingYoutube, apingYoutubeHelper.getThisPlatformString(), appSettings);
 
                 requests.forEach(function (request) {
 
@@ -18,7 +18,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
                     var helperObject = {
                         model: appSettings.model,
                     };
-                    if(typeof appSettings.getNativeData !== "undefined") {
+                    if (typeof appSettings.getNativeData !== "undefined") {
                         helperObject.getNativeData = appSettings.getNativeData;
                     } else {
                         helperObject.getNativeData = false;
@@ -26,29 +26,33 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                     //create requestObject for api request call
                     var requestObject = {
-                        key: apingUtilityHelper.getApiCredentials(apingYoutubeHelper.getThisPlattformString(), "apiKey"),
+                        key: apingUtilityHelper.getApiCredentials(apingYoutubeHelper.getThisPlatformString(), "apiKey"),
                     };
 
-                    if(typeof request.items !== "undefined") {
+                    if (typeof request.items !== "undefined") {
                         requestObject.maxResults = request.items;
                     } else {
                         requestObject.maxResults = appSettings.items;
                     }
 
+                    if (requestObject.maxResults === 0 || requestObject.maxResults === '0') {
+                        return false;
+                    }
+
                     // -1 is "no explicit limit". same for NaN value
-                    if(requestObject.maxResults < 0 || isNaN(requestObject.maxResults)) {
+                    if (requestObject.maxResults < 0 || isNaN(requestObject.maxResults)) {
                         requestObject.maxResults = undefined;
                     }
 
                     // the api has a limit of 50 items per request
-                    if(requestObject.maxResults > 50) {
+                    if (requestObject.maxResults > 50) {
                         requestObject.maxResults = 50;
                     }
 
 
                     if (request.channelId) { //search for channelID (and optional searchterm)
                         requestObject.channelId = request.channelId;
-                        if(request.search) {
+                        if (request.search) {
                             requestObject.q = request.search;
                         }
 
@@ -61,15 +65,15 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                     } else if (request.search || (request.lat && request.lng)) { //search for searchterm and or location
 
-                        if(request.search) {
+                        if (request.search) {
                             requestObject.q = request.search;
                         }
 
-                        if(request.lat && request.lng) {
+                        if (request.lat && request.lng) {
                             requestObject.location = request.lat + "," + request.lng;
                         }
 
-                        if(request.distance) {
+                        if (request.distance) {
                             requestObject.locationRadius = request.distance;
                         }
 
