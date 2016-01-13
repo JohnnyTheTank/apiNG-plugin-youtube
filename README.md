@@ -1,11 +1,14 @@
 [logo]: http://aping.io/logo/320/aping-plugin.png "apiNG Plugin"
 ![apiNG][logo]
 
+[![npm version](https://badge.fury.io/js/aping-plugin-youtube.png)](https://badge.fury.io/js/aping-plugin-youtube)
+[![Bower version](https://badge.fury.io/bo/apiNG-plugin-youtube.png)](https://badge.fury.io/bo/apiNG-plugin-youtube)
+
 **_apiNG-plugin-youtube_** is a [Youtube Data API v3](https://developers.google.com/youtube/v3/) plugin for [**apiNG**](https://github.com/JohnnyTheTank/apiNG).
 
 # Information
 * **Supported apiNG models: `social`, `video`**
-* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/configuration#parameters)
+* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/advanced#parameters)
 * This plugin needs an [api key](#2-api-key) :warning:
 * Used promise library: [angular-youtube-api-factory](https://github.com/JohnnyTheTank/angular-youtube-api-factory) _(included in distribution files)_
 
