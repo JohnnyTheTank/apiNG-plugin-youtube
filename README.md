@@ -17,7 +17,7 @@
 1. [INSTALLATION](#1-installation)
     1. Get file
     2. Include file
-    3. Add dependencies
+    3. Add dependency
     4. Add plugin
 2. [API KEY](#2-api-key)
     1. Generate your `apiKey`
@@ -50,7 +50,7 @@ Include `aping-plugin-youtube.min.js` in your apiNG application
 <script src="aping-plugin-youtube.min.js"></script>
 ```
 
-### III. Add dependencies
+### III. Add dependency
 Add the module `jtt_aping_youtube` as a dependency to your app module:
 ```js
 var app = angular.module('app', ['jtt_aping', 'jtt_aping_youtube']);
