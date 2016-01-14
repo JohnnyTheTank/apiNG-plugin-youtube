@@ -30,7 +30,7 @@
 ## 1. INSTALLATION
 
 ### I. Get file
-Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
+Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/), CDN (jsDelivr) or downloaded files:
 
 * `bower install apiNG-plugin-youtube --save`
 * `npm install aping-plugin-youtube --save`
