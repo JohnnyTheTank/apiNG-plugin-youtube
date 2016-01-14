@@ -48,7 +48,7 @@ Include `aping-plugin-youtube.min.js` in your apiNG application
 <script src="node_modules/aping-plugin-youtube/dist/aping-plugin-youtube.min.js"></script>
 
 <!-- when using cdn file -->
-<script src="//cdn.jsdelivr.net/aping.plugin-youtube/0.7.6/aping-plugin-youtube.min.js"></script>
+<script src="//cdn.jsdelivr.net/aping.plugin-youtube/latest/aping-plugin-youtube.min.js"></script>
 
 <!-- when using downloaded files -->
 <script src="aping-plugin-youtube.min.js"></script>
