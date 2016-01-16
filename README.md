@@ -34,7 +34,7 @@ Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/), CDN
 
 * `bower install apiNG-plugin-youtube --save`
 * `npm install aping-plugin-youtube --save`
-* use CDN file
+* use [CDN file](https://www.jsdelivr.com/projects/aping.plugin-youtube)
 * download [apiNG-plugin-youtube.zip](https://github.com/JohnnyTheTank/apiNG-plugin-youtube/zipball/master)
 
 ### II. Include file
