@@ -1,13 +1,13 @@
 /**
     @name: aping-plugin-youtube 
-    @version: 0.7.6 (11-01-2016) 
+    @version: 0.7.6 (24-01-2016) 
     @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-youtube 
     @license: MIT
 */
 "use strict";
 
-var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
+angular.module("jtt_aping_youtube", ['jtt_youtube'])
     .directive('apingYoutube', ['youtubeFactory', 'apingYoutubeHelper', 'apingUtilityHelper', function (youtubeFactory, apingYoutubeHelper, apingUtilityHelper) {
         return {
             require: '?aping',
@@ -105,7 +105,7 @@ var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
         }
     }]);;"use strict";
 
-jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
+angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
     this.getThisPlatformString = function () {
         return "youtube";
     };

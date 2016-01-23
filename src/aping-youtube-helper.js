@@ -1,6 +1,6 @@
 "use strict";
 
-jjtApingYoutube.service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
+angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
     this.getThisPlatformString = function () {
         return "youtube";
     };

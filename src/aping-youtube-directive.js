@@ -1,6 +1,6 @@
 "use strict";
 
-var jjtApingYoutube = angular.module("jtt_aping_youtube", ['jtt_youtube'])
+angular.module("jtt_aping_youtube", ['jtt_youtube'])
     .directive('apingYoutube', ['youtubeFactory', 'apingYoutubeHelper', 'apingUtilityHelper', function (youtubeFactory, apingYoutubeHelper, apingUtilityHelper) {
         return {
             require: '?aping',
