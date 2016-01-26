@@ -146,6 +146,7 @@ Sample requests:
 |----------|---------|---------|---------|---------|
 | **`search`** | `music` |  | The `search` parameter specifies the query term to search for. Your request can also use the Boolean NOT (-) and OR (&#124;) operators to exclude videos or to find videos that are associated with one of several search terms. For example, to search for videos matching either "boating" or "sailing", set the `search` parameter value to boating&#124;sailing. Similarly, to search for videos matching either "boating" or "sailing" but not "fishing", set the `search` parameter value to boating&#124;sailing -fishing | no |
 | **`items`**  | `20` | `5` | Items per request (`0`-`50`) |  yes  |
+| **`order`** | `rating` | `date` | The order parameter specifies the method that will be used to order resources in the API response. Use `date`, `rating`, `relevance`, `title`, `videoCount` or `viewCount` | yes |
 | **`lat`** | `-13.163333` |  | Defines a circular geographic area and also restricts a search to videos that specify, in their metadata, a geographic location that falls within that area. | yes |
 | **`lng`** | `-72.545556` |  | Defines a circular geographic area and also restricts a search to videos that specify, in their metadata, a geographic location that falls within that area. | yes |
 | **`distance`** | `1km` | `5000m` | The parameter value must be a floating point number followed by a measurement unit. Valid measurement units are `m`, `km`, `ft`, and `mi`. (valid values: `1500m`, `5km`, `10000ft`, and `0.75mi`) The API does not support values larger than 1000 kilometers. | yes |
@@ -160,6 +161,7 @@ Sample requests:
 | **`lat`** | `-13.163333` |  | Defines a circular geographic area and also restricts a search to videos that specify, in their metadata, a geographic location that falls within that area. | no |
 | **`lng`** | `-72.545556` |  | Defines a circular geographic area and also restricts a search to videos that specify, in their metadata, a geographic location that falls within that area. | no |
 | **`distance`** | `1km` | `5000m` | The parameter value must be a floating point number followed by a measurement unit. Valid measurement units are `m`, `km`, `ft`, and `mi`. (valid values: `1500m`, `5km`, `10000ft`, and `0.75mi`) The API does not support values larger than 1000 kilometers. | yes |
+| **`order`** | `rating` | `date` | The order parameter specifies the method that will be used to order resources in the API response. Use `date`, `rating`, `relevance`, `title`, `videoCount` or `viewCount` | yes |
 | **`items`**  | `20` | `5` | Items per request (`0`-`50`) |  yes  |
 
 Sample requests:

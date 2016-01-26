@@ -65,6 +65,10 @@ angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                     } else if (request.search || (request.lat && request.lng)) { //search for searchterm and or location
 
+                        if (request.order) {
+                            requestObject.order = request.order;
+                        }
+
                         if (request.search) {
                             requestObject.q = request.search;
                         }

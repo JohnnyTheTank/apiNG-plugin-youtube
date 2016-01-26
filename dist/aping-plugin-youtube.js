@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-youtube 
-    @version: 0.7.6 (24-01-2016) 
+    @version: 0.7.7 (26-01-2016) 
     @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-youtube 
     @license: MIT
@@ -72,6 +72,10 @@ angular.module("jtt_aping_youtube", ['jtt_youtube'])
 
                     } else if (request.search || (request.lat && request.lng)) { //search for searchterm and or location
 
+                        if (request.order) {
+                            requestObject.order = request.order;
+                        }
+
                         if (request.search) {
                             requestObject.q = request.search;
                         }
@@ -142,12 +146,12 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
             if (_data.data.items) {
                 angular.forEach(_data.data.items, function (value, key) {
                     var tempResult;
-                    if(_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
+                    if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
                         tempResult = value;
                     } else {
                         tempResult = _this.getItemByJsonData(value, _helperObject.model);
                     }
-                    if(tempResult) {
+                    if (tempResult) {
                         requestResults.push(tempResult);
                     }
                 });
@@ -179,7 +183,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
         $.extend(true, socialObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
-            blog_link: this.getThisPlatformLink()+"channel/" + _item.snippet.channelId,
+            blog_link: this.getThisPlatformLink() + "channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
@@ -201,8 +205,13 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
             socialObject.type = "video";
             socialObject.position = _item.snippet.position;
         }
+
+        socialObject.source = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/' + socialObject.intern_id + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+
         socialObject.img_url = this.getYoutubeImageFromId(socialObject.intern_id);
-        socialObject.post_url = this.getThisPlatformLink()+"watch?v=" + socialObject.intern_id;
+        socialObject.thumb_url = this.getYoutubeImageFromId(socialObject.intern_id, 'default');
+        socialObject.native_url = this.getYoutubeImageFromId(socialObject.intern_id, 'maxresdefault');
+        socialObject.post_url = this.getThisPlatformLink() + "watch?v=" + socialObject.intern_id;
         return socialObject;
     };
 
@@ -211,7 +220,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
         $.extend(true, videoObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
-            blog_link: this.getThisPlatformLink()+"channel/" + _item.snippet.channelId,
+            blog_link: this.getThisPlatformLink() + "channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
             intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
@@ -228,9 +237,11 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
             }
         }
         videoObject.img_url = this.getYoutubeImageFromId(videoObject.intern_id);
-        videoObject.post_url = this.getThisPlatformLink()+"watch?v=" + videoObject.intern_id;
+        videoObject.thumb_url = this.getYoutubeImageFromId(videoObject.intern_id, 'default');
+        videoObject.native_url = this.getYoutubeImageFromId(videoObject.intern_id, 'maxresdefault');
+        videoObject.post_url = this.getThisPlatformLink() + "watch?v=" + videoObject.intern_id;
         videoObject.position = _item.snippet.position;
-        videoObject.markup = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/'+videoObject.intern_id+'?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+        videoObject.markup = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/' + videoObject.intern_id + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
 
         return videoObject;
     };
