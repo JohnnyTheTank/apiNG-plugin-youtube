@@ -101,7 +101,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
 
         socialObject.img_url = this.getYoutubeImageFromId(socialObject.intern_id);
         socialObject.thumb_url = this.getYoutubeImageFromId(socialObject.intern_id, 'default');
-        socialObject.native_url = this.getYoutubeImageFromId(socialObject.intern_id, 'maxresdefault');
+        socialObject.native_url = this.getYoutubeImageFromId(socialObject.intern_id);
         socialObject.post_url = this.getThisPlatformLink() + "watch?v=" + socialObject.intern_id;
         return socialObject;
     };
@@ -129,7 +129,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
         }
         videoObject.img_url = this.getYoutubeImageFromId(videoObject.intern_id);
         videoObject.thumb_url = this.getYoutubeImageFromId(videoObject.intern_id, 'default');
-        videoObject.native_url = this.getYoutubeImageFromId(videoObject.intern_id, 'maxresdefault');
+        videoObject.native_url = this.getYoutubeImageFromId(videoObject.intern_id);
         videoObject.post_url = this.getThisPlatformLink() + "watch?v=" + videoObject.intern_id;
         videoObject.position = _item.snippet.position;
         videoObject.markup = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/' + videoObject.intern_id + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
