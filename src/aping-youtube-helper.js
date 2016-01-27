@@ -71,7 +71,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
 
     this.getSocialItemByJsonData = function (_item) {
         var socialObject = apingModels.getNew("social", "youtube");
-        $.extend(true, socialObject, {
+        angular.extend(socialObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
             blog_link: this.getThisPlatformLink() + "channel/" + _item.snippet.channelId,
@@ -108,7 +108,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
 
     this.getVideoItemByJsonData = function (_item) {
         var videoObject = apingModels.getNew("video", "youtube");
-        $.extend(true, videoObject, {
+        angular.extend(videoObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
             blog_link: this.getThisPlatformLink() + "channel/" + _item.snippet.channelId,

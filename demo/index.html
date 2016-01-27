@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>apiNG Youtube Demo</title>
 
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/apiNG/dist/aping.min.js"></script>
     <script src="aping-config.js"></script>
@@ -13,13 +12,13 @@
 </head>
 <body ng-app="app">
     <h1>[{'channelId':'UCoxMr8CYaJY-om5eJ2RA_4g'}]</h1>
-    <aping template-url="template.html" model="social" get-native-data="true" aping-youtube="[{'channelId':'UCoxMr8CYaJY-om5eJ2RA_4g'}]"></aping>
+    <aping template-url="template.html" model="video" get-native-data="false" aping-youtube="[{'channelId':'UCoxMr8CYaJY-om5eJ2RA_4g'}]"></aping>
     <hr>
     <h1>[{'lat':'48.2187997', 'lng':'11.6247072', 'distance':'1000m'}]</h1>
     <aping template-url="template.html" model="social" aping-youtube="[{'lat':'48.2187997', 'lng':'11.6247072', 'distance':'1000m'}]"></aping>
     <hr>
     <h1>[{'search':'fcbayern'}]</h1>
-    <aping template-url="template.html" model="social" aping-youtube="[{'search':'fcbayern'}]"></aping>
+    <aping template-url="template.html" model="social" aping-youtube="[{'search':'fcbayern', 'order':'rating'}]"></aping>
     <hr>
     <h1>[{'playlistId':'PLzm_lfByuAEF5RTM5j94TLrbbF4a9PBG4'}]</h1>
     <aping template-url="template.html" model="social" aping-youtube="[{'playlistId':'PLzm_lfByuAEF5RTM5j94TLrbbF4a9PBG4'}]"></aping>

@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-youtube 
-    @version: 0.7.7 (27-01-2016) 
+    @version: 0.7.8 (27-01-2016) 
     @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-youtube 
     @license: MIT
@@ -180,7 +180,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
 
     this.getSocialItemByJsonData = function (_item) {
         var socialObject = apingModels.getNew("social", "youtube");
-        $.extend(true, socialObject, {
+        angular.extend(socialObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
             blog_link: this.getThisPlatformLink() + "channel/" + _item.snippet.channelId,
@@ -217,7 +217,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
 
     this.getVideoItemByJsonData = function (_item) {
         var videoObject = apingModels.getNew("video", "youtube");
-        $.extend(true, videoObject, {
+        angular.extend(videoObject, {
             blog_name: _item.snippet.channelTitle || undefined,
             blog_id: _item.snippet.channelId || undefined,
             blog_link: this.getThisPlatformLink() + "channel/" + _item.snippet.channelId,
