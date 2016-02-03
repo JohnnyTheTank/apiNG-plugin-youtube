@@ -9,6 +9,39 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
         return "https://www.youtube.com/";
     };
 
+    this.convertYoutubeDurationToSeconds = function (duration) {
+        var a = duration.match(/\d+/g);
+
+        if (duration.indexOf('M') >= 0 && duration.indexOf('H') == -1 && duration.indexOf('S') == -1) {
+            a = [0, a[0], 0];
+        }
+
+        if (duration.indexOf('H') >= 0 && duration.indexOf('M') == -1) {
+            a = [a[0], 0, a[1]];
+        }
+        if (duration.indexOf('H') >= 0 && duration.indexOf('M') == -1 && duration.indexOf('S') == -1) {
+            a = [a[0], 0, 0];
+        }
+
+        duration = 0;
+
+        if (a.length == 3) {
+            duration = duration + parseInt(a[0]) * 3600;
+            duration = duration + parseInt(a[1]) * 60;
+            duration = duration + parseInt(a[2]);
+        }
+
+        if (a.length == 2) {
+            duration = duration + parseInt(a[0]) * 60;
+            duration = duration + parseInt(a[1]);
+        }
+
+        if (a.length == 1) {
+            duration = duration + parseInt(a[0]);
+        }
+        return duration
+    };
+
     this.getYoutubeIdFromUrl = function (_url) {
         var rx = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
         return _url.match(rx)[1] || false;
@@ -76,7 +109,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
             blog_id: _item.snippet.channelId || undefined,
             blog_link: this.getThisPlatformLink() + "channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
-            intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
+            intern_id: _item.id.videoId || ((_item.snippet.resourceId && _item.snippet.resourceId.videoId) ? _item.snippet.resourceId.videoId : _item.id),
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
         });
         socialObject.date_time = new Date(socialObject.timestamp);
@@ -103,6 +136,17 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
         socialObject.thumb_url = this.getYoutubeImageFromId(socialObject.intern_id, 'default');
         socialObject.native_url = this.getYoutubeImageFromId(socialObject.intern_id);
         socialObject.post_url = this.getThisPlatformLink() + "watch?v=" + socialObject.intern_id;
+
+        if (_item.statistics) {
+            if (_item.statistics.commentCount && _item.statistics.commentCount > 0) {
+                socialObject.comments = _item.statistics.commentCount;
+            }
+
+            if (_item.statistics.likeCount && _item.statistics.likeCount > 0) {
+                socialObject.likes = _item.statistics.likeCount;
+            }
+        }
+
         return socialObject;
     };
 
@@ -113,7 +157,7 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
             blog_id: _item.snippet.channelId || undefined,
             blog_link: this.getThisPlatformLink() + "channel/" + _item.snippet.channelId,
             intern_type: _item.id.kind,
-            intern_id: _item.id.videoId || _item.snippet.resourceId.videoId,
+            intern_id: _item.id.videoId || ((_item.snippet.resourceId && _item.snippet.resourceId.videoId) ? _item.snippet.resourceId.videoId : _item.id),
             timestamp: apingTimeHelper.getTimestampFromDateString(_item.snippet.publishedAt, 1000, 7200),
         });
         videoObject.date_time = new Date(videoObject.timestamp);
@@ -133,6 +177,20 @@ angular.module("jtt_aping_youtube").service('apingYoutubeHelper', ['apingModels'
         videoObject.post_url = this.getThisPlatformLink() + "watch?v=" + videoObject.intern_id;
         videoObject.position = _item.snippet.position;
         videoObject.markup = '<iframe width="1280" height="720" src="https://www.youtube.com/embed/' + videoObject.intern_id + '?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>';
+
+        if (_item.statistics) {
+            if (_item.statistics.commentCount && _item.statistics.commentCount > 0) {
+                videoObject.comments = _item.statistics.commentCount;
+            }
+
+            if (_item.statistics.likeCount && _item.statistics.likeCount > 0) {
+                videoObject.likes = _item.statistics.likeCount;
+            }
+        }
+
+        if (_item.contentDetails && _item.contentDetails.duration) {
+            videoObject.duration = this.convertYoutubeDurationToSeconds(_item.contentDetails.duration);
+        }
 
         return videoObject;
     };

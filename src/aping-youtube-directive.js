@@ -50,7 +50,18 @@ angular.module("jtt_aping_youtube", ['jtt_youtube'])
                     }
 
 
-                    if (request.channelId) { //search for channelID (and optional searchterm)
+                    if (request.videoId) {
+                        requestObject.videoId = request.videoId;
+
+                        youtubeFactory.getVideoById(requestObject)
+                            .then(function (_videosData) {
+                                if (_videosData) {
+                                    apingController.concatToResults(apingYoutubeHelper.getObjectByJsonData(_videosData, helperObject));
+                                }
+                            });
+
+                    } else if (request.channelId) { //search for channelID (and optional searchterm)
+
                         requestObject.channelId = request.channelId;
                         if (request.search) {
                             requestObject.q = request.search;

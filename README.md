@@ -120,6 +120,15 @@ Supported apiNG models
 ### II. Requests
 Every **apiNG plugin** expects an array of **requests** as html attribute.
 
+#### Requests by Video
+|  parameter  | sample | default | description | optional |
+|----------|---------|---------|---------|---------|
+| **`videoId`** | `cBLulx9f9vc` |  | Youtube `videoId` (comma seperated list) | no |
+
+Sample requests:
+* `[{'videoId':'cBLulx9f9vc'}, {'videoId':'tC76tIp0kBk'}]`
+* `[{'videoId':'cBLulx9f9vc,tC76tIp0kBk'}]`
+
 #### Requests by Channel
 |  parameter  | sample | default | description | optional |
 |----------|---------|---------|---------|---------|
