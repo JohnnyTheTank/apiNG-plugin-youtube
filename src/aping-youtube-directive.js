@@ -66,6 +66,15 @@ angular.module("jtt_aping_youtube", ['jtt_youtube'])
                         if (request.search) {
                             requestObject.q = request.search;
                         }
+                        
+                        if (request.order) {
+                            if (request.order === "$RANDOM") {
+                                var orderList = ['date', 'rating', 'relevance', 'title', 'videoCount', 'viewCount'];
+                                requestObject.order = orderList[Math.floor(Math.random() * orderList.length)]
+                            } else {
+                                requestObject.order = request.order;
+                            }
+                        }
 
                         youtubeFactory.getVideosFromChannelById(requestObject)
                             .then(function (_videosData) {
@@ -77,7 +86,12 @@ angular.module("jtt_aping_youtube", ['jtt_youtube'])
                     } else if (request.search || (request.lat && request.lng)) { //search for searchterm and or location
 
                         if (request.order) {
-                            requestObject.order = request.order;
+                            if (request.order === "$RANDOM") {
+                                var orderList = ['date', 'rating', 'relevance', 'title', 'videoCount', 'viewCount'];
+                                requestObject.order = orderList[Math.floor(Math.random() * orderList.length)]
+                            } else {
+                                requestObject.order = request.order;
+                            }
                         }
 
                         if (request.search) {
