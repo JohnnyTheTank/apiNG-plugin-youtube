@@ -149,7 +149,7 @@ Sample requests:
 
 Sample requests:
 * `[{'playlistId':'PLXkE1kzapj4a9oWMggQ0i682chTam-I98'}, {'playlistId':'PL0XHkAy96suU3u6rx8S-NBEaHBgqsHTck'}]`
-* `[{'channelId':'PL2uZhEhKQPWZ0pI-LUzjDD3OLSuNo3E1p', 'items':10}]`
+* `[{'playlistId':'PL0XHkAy96suU3u6rx8S-NBEaHBgqsHTck', 'items':10}]`
 
 #### Requests by Search
 |  parameter  | sample | default | description | optional |
