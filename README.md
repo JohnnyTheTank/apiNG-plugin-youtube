@@ -2,8 +2,8 @@
 ![apiNG][logo]
 
 [![Join the chat at https://gitter.im/JohnnyTheTank/apiNG](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/JohnnyTheTank/apiNG?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![npm version](https://badge.fury.io/js/aping-plugin-youtube.png)](https://badge.fury.io/js/aping-plugin-youtube)
-[![Bower version](https://badge.fury.io/bo/apiNG-plugin-youtube.png)](https://badge.fury.io/bo/apiNG-plugin-youtube)
+[![npm version](https://badge.fury.io/js/aping-plugin-youtube.svg)](https://badge.fury.io/js/aping-plugin-youtube)
+[![Bower version](https://badge.fury.io/bo/apiNG-plugin-youtube.svg)](https://badge.fury.io/bo/apiNG-plugin-youtube)
 
 **_apiNG-plugin-youtube_** is a [Youtube Data API v3](https://developers.google.com/youtube/v3/) plugin for [**apiNG**](https://github.com/JohnnyTheTank/apiNG).
 
