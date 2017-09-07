@@ -2,7 +2,7 @@
   "name": "aping-plugin-youtube",
   "version": "0.7.12",
   "description": "Youtube plugin for apiNG",
-  "main": "dist/angular-plugin-youtube.min.js",
+  "main": "dist/aping-plugin-youtube.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
